@@ -1,0 +1,117 @@
+﻿@model List<organ_donation.Models.AccepterViewModel>
+@{
+    ViewBag.Title = "BaseAccepterView";
+}
+<style>
+    #customers {
+        font-family: "Times New Roman", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+
+
+<h2>Base Accepter View</h2>
+<table id="customers">
+    <tr>
+        <th>
+            Accepter Name:
+        </th>
+        <th>
+            Requirement:
+        </th>
+        <th>
+            Age:
+        </th>
+        <th>
+            Date:
+
+        </th>
+        <th>
+            Gender:
+        </th>
+        <th>
+            Location:
+        </th>
+        <th>
+            Blood Group:
+        </th>
+        <th>
+            Contact:
+        </th>
+        <th>
+            Status:
+
+        </th>
+
+    </tr>
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>
+                @i.NAME
+            </td>
+            <td>
+                @i.REQUIREMENT
+            </td>
+            <td>
+                @i.AGE
+            </td>
+            <td>
+                @i.DATE
+            </td>
+            <td>
+                @i.GENDER
+            </td>
+            <td>
+                @i.LOCATION
+            </td>
+            <td>
+                @i.BLOOD_GROUP
+            </td>
+            <td>
+                @i.CONTACT_NUMBER
+            </td>
+            <td>
+
+                @i.STATUS
+            </td>
+            <td>
+                @if (i.STATUS == "Assigned")
+                {
+                    <a href="~/Main/BookAppointment?aid=@i.ACEEPTER_ID">Book An Appointment</a>
+                }
+                else if (i.STATUS == "Rejected")
+                {
+                    <a href="~/Main/BookAppointment?aid=@i.ACEEPTER_ID">Retake Appointment</a>
+                }
+
+            </td>
+        </tr>
+    }
+
+
+</table>
+<br /><br /><br />
+<a href="/LogIn/SignIn">LOGOUT</a>

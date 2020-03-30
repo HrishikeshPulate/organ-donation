@@ -1,0 +1,96 @@
+﻿@model List<organ_donation.Models.NomineeViewModel>
+@{
+    ViewBag.Title = "BaseNomineeView";
+
+}
+<style>
+    #customers {
+        font-family: "Times New Roman", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+
+
+<h2>Base Nominee View</h2>
+<table id="customers">
+    <tr>
+        <th>
+            Nominee Name
+        </th>
+        <th>
+            Donor Name
+        </th>
+        <th>
+            Donor Age
+        </th>
+        <th>
+            Donor Gender
+        </th>
+        <th>
+            Blood Group
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Contact
+        </th>
+        <th>Location</th>
+        <th>Status</th>
+    </tr>
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>
+                @i.NomineeName
+            </td>
+            <td>
+                @i.DonorName
+            </td>
+            <td>
+                @i.DonorAge
+            </td>
+            <td>
+                @i.DonorGender
+            </td>
+            <td>
+                @i.BloodGroup
+            </td>
+            <td>
+                @i.Date
+            </td>
+            <td>
+                @i.Contact
+            </td>
+            <td>
+                @i.Location
+            </td>
+            <td><b>@i.Status</b></td>
+        </tr>
+    }
+
+</table>
+<br /><br />
+<a href="~/LogIn/SignIn">LOGOUT</a>

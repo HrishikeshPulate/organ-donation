@@ -1,0 +1,69 @@
+﻿@model organ_donation.Models.BookAppointmentModel
+@{
+    ViewBag.Title = "BookAppointment";
+}
+<style>
+    body {
+        background-color: pink;
+    }
+
+    c {
+        background-color: deeppink;
+    }
+
+    #customers {
+        font-family: "Times New Roman", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        font-size: medium;
+        width: 50%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+<center>
+    <h2 style="font-family:'Times New Roman'">Book Appointment</h2>
+    @using (Html.BeginForm("BookAppointment", "Main", FormMethod.Post))
+    {
+        <table id="customers">
+            <tr>
+                <th>
+                    @Html.Label("Date :")
+                </th>
+                <td>
+                    @Html.TextBoxFor(m => m.Date)
+               </td>
+           </tr>
+            <tr>
+                <th>
+                    @Html.Label("Slot :")
+                </th>
+                <td>
+                    @Html.DropDownListFor(m => m.Slot, Model.SlotList)
+                </td>
+            </tr>
+       </table>
+       <br />
+           <input type="submit" value="submit" />
+         }
+                    <h2>@ViewBag.msg</h2>
+                    <a href="~/Main/BaseAccepterView">BACK</a>
+</center>

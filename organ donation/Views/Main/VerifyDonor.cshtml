@@ -1,0 +1,61 @@
+﻿@model organ_donation.Models.VerifyDonorModel
+@{
+    ViewBag.Title = "VerifyDonor";
+}
+<style>
+    #customers {
+        font-family: "Times New Roman", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+<center>
+    <h2 style="font-family:'Times New Roman'">Verify Donor</h2>
+    @using (Html.BeginForm("VerifyDonor", "Main", FormMethod.Post))
+    {
+        <table id="customers">
+            <tr>
+                <th>
+                    @Html.Label("Verification Status:")
+                </th>
+                <td>
+                    @Html.DropDownListFor(m => m.status, Model.StatusList)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.Label("Orgons:")
+                </th>
+                <td>
+                    @Html.DropDownListFor(m => m.Orgon, Model.OList)
+
+                </td>
+            </tr>
+        </table>
+        <br /><br />
+        <input type="submit" value="Submit" />
+    }
+    <h3>@ViewBag.msg</h3>
+    <a href="/Main/BaseDoctorView">Back</a>
+</center>

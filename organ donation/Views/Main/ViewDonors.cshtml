@@ -1,0 +1,90 @@
+﻿@model List<organ_donation.Models.CasePoolViewModel>
+@{
+    ViewBag.Title = "ViewDonors";
+}
+<style>
+    #customers {
+        font-family: "Times New Roman", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+
+<h2>Base Manager View</h2>
+<h2>@ViewBag.Alert</h2>
+<table id="customers">
+    <tr>
+        <th>
+            CaseId:
+        </th>
+        <th>
+            Accepter Id:
+        </th>
+        <th>
+            Doctor Id:
+        </th>
+        <th>
+            Orgons:
+        </th>
+        <th>
+            Donor Id:
+        </th>
+        <th>
+            Status:
+        </th>
+        <th>
+            Links:
+        </th>
+    </tr>
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>
+                @i.CaseId
+            </td>
+            <td>
+                @i.AccepterId
+            </td>
+            <td>
+                @i.DoctorId
+            </td>
+            <td>
+                @i.Organs
+            </td>
+            <td>
+                @i.DonorId
+            </td>
+            <td>
+                @i.Status
+            </td>
+            <td>
+                @{ if (i.Status == "Assigned" || i.Status == "Rejected")
+                    {
+                        <a href="~/Main/VerifyDonor?cid=@i.CaseId">Verify Donor</a>
+                    }
+                }
+            </td>
+        </tr>
+    }
+</table>

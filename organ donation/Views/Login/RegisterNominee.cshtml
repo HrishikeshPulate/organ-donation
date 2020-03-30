@@ -1,0 +1,155 @@
+﻿@model organ_donation.Models.RegisterNomineeModel
+@{
+    ViewBag.Title = "RegisterNominee";
+   // Layout = null;
+}
+
+
+<style>
+    body {
+        background-color: pink;
+    }
+   c{
+        background-color:deeppink;
+    }
+    #customers {
+        font-family: "Times New Roman", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        font-size: medium;
+        width: 50%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+
+<br />
+
+<body>
+    <center>
+        <c><h2 style="font-family:'Times New Roman'">Register Nominee</h2></c>
+        @using (Html.BeginForm("RegisterNominee", "Login", FormMethod.Post))
+        {
+            <table id="customers">
+                <tr>
+                    <td>
+                        <span>Nominee Name:</span>
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.NomineeName)
+                        @Html.ValidationMessageFor(m => m.NomineeName)
+
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Username:</span>
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Username)
+                        @Html.ValidationMessageFor(m => m.Username)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Password:</span>
+                    </td>
+                    <td>
+                        @Html.PasswordFor(m => m.pwd)
+                        @Html.ValidationMessageFor(m => m.pwd)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Confirm Password:</span>
+                    </td>
+                    <td>
+                        @Html.PasswordFor(m => m.CPwd)
+                        @Html.ValidationMessageFor(m => m.CPwd)
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <span>Donor Name:</span>
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.DonorName)
+                        @Html.ValidationMessageFor(m => m.DonorName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Donor Age:</span>
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.DonorAge, Model.AgeList)
+                        @Html.ValidationMessageFor(m => m.DonorAge)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Donor Gender:</span>
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.DonorGender, Model.GenList)
+                        @Html.ValidationMessageFor(m => m.GenList)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Blood Group:</span>
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.BloodGroup, Model.BGList)
+                        @Html.ValidationMessageFor(m => m.BGList)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Location:</span>
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.Location, Model.LocList)
+                        @Html.ValidationMessageFor(m => m.LocList)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Contact No:</span>
+                    </td>
+                    <td>
+                        @*@Html.Label("Contact Number:")*@ @Html.TextBoxFor(m => m.Contact)
+                        @Html.ValidationMessageFor(m => m.Contact)
+                    </td>
+                </tr>
+
+            </table>
+            <br /><br />
+            <input type="submit" value="Submit" />
+        }
+        <br />
+        <h2>@ViewBag.msg</h2>
+        <br /><br />
+        <a href="~/LogIn/SignIn">Return To HomePage</a>
+    </center>
+</body>

@@ -1,0 +1,44 @@
+﻿@model organ_donation.Models.SignInModel
+@{
+    ViewBag.Title = "SignIn";
+ //Layout = null;
+}
+<html>
+<head>
+    <style>
+        body {
+            background-image: url('../../Content/cpp-shining-the-light-on-tissue-and-organ-donation.jpg');
+        }
+      
+       
+    </style>
+</head>
+<body>
+     
+        <h2 style="font-family:'Times New Roman'">Sign In</h2>
+    <br />
+        @using (Html.BeginForm("SignIn", "LogIn", FormMethod.Post))
+        {
+
+            <span style="font-family:'Times New Roman'">USERNAME:</span>@Html.TextBoxFor(m => m.Username)
+            @Html.ValidationMessageFor(m => m.Username)
+            <br />
+            <br />
+            <span style="font-family:'Times New Roman'">PASSWORD:</span>@Html.PasswordFor(m => m.Password)
+            @Html.ValidationMessageFor(m => m.Password)
+            <br />
+            <br />
+            <input type="submit" value="LOGIN" />
+        }
+        <h2 style="font-family:'Times New Roman'">@ViewBag.msg</h2>
+
+        <br />
+        <c style="font-family:'Times New Roman'"> <a href="~/LogIn/RegisterNominee">Register As Nominee</a></c>
+        <br />
+        <br />
+        <c style="font-family:'Times New Roman'"><a href="~/LogIn/RegisterAccepter">Register As Accepter</a></c>
+        <br />
+        <br />
+    
+</body>
+</html>

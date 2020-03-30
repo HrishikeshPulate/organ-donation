@@ -1,0 +1,56 @@
+﻿@model organ_donation.Models.ViewDoctorModel
+@{
+    ViewBag.Title = "AssignDoctor";
+}
+<style>
+    #customers {
+        font-family: "Times New Roman", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+<center>
+    <h2 style="font-family:'Times New Roman'">Assign Doctor</h2>
+   
+    <body>
+        @using (Html.BeginForm("AssignDoctor", "Main", FormMethod.Post))
+        {
+            <table id="customers">
+                <tr>
+                    <th>
+                        <d style="font-family:'Times New Roman'">Select Doctor:</d>
+                    </th>
+                    <td>
+                        @Html.DropDownListFor(m => m.DoctorId, Model.DocList)
+                    </td>
+                </tr>
+            </table>
+           <br /><br />
+            <input type="submit" value="submit" />
+            
+        }
+        <h3>@ViewBag.msg</h3>
+        <a href="~/Main/BaseManagerView">Back</a>
+    </body>
+</center>
